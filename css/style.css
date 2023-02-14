@@ -1,0 +1,10 @@
+.body {
+  background-image: url(/image/Login.png);
+}
+.card {
+  color: transparent;
+}
+.error-text {
+  position: absolute;
+  display: none;
+}
