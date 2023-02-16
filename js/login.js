@@ -10,10 +10,10 @@ const errorText = (element, text) => {
   element.style.display = "block";
   const timer = setTimeout(() => {
     element.style.display = "none";
+
     clearTimeout(timer);
   }, 3000);
 };
-console.log();
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
   if (userInput.value.length == 0) {
@@ -22,29 +22,28 @@ form.addEventListener("submit", (evt) => {
   if (passwordInput.value.length < 6) {
     errorText(passwordError, "Ma'lumot 6ta belgidan kam bo'lmasligi kerak!");
   }
-});
 
-const login = {
-  // email: "eve.holt@reqres.in",
-  // password: "cityslicka",
-  email: userInput.value,
-  password: passwordInput.value,
-};
-
-fetch("https://reqres.in/api/login ", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(login),
-})
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    if (data.token) {
-      const token = data.token;
-      localStorage.setItem("token", token);
-      window.location.href = "/index.html";
-    }
+  const login = {
+    // email: "eve.holt@reqres.in",
+    // password: "cityslicka",
+    email: userInput.value,
+    password: passwordInput.value,
+  };
+  fetch("https://reqres.in/api/login ", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(login),
   })
-  .catch((err) => {
-    errorText(userError, err);
-  });
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.token) {
+        const token = data.token;
+        localStorage.setItem("token", token);
+        window.location.href = "/index.html";
+      }
+    })
+    .catch((err) => {
+      errorText(userError, err);
+    });
+});

@@ -23,14 +23,16 @@ function renderCard(array, parent = elCards) {
 
     elCards.dataset.id = book.id;
 
-    image.src = book.image;
-    title.textContent = book.title;
-    description.textContent = book.description;
-    date.textContent = book.date;
+    image.src = book.volumeInfo.selfLink;
+    title.textContent = book.volumeInfo.title;
+    description.textContent = book.volumeInfo.subtitle;
+    date.textContent = book.volumeInfo.publishedDate;
     show.textContent = array.length;
     result.textContent = array.length;
+    readBtn.href = book.volumeInfo.infoLink;
 
     fragment.appendChild(template);
+    console.log(book);
   });
   parent.appendChild(fragment);
 }
@@ -49,9 +51,12 @@ searchInput.addEventListener("input", (evt) => {
   renderCard(searchBook);
 });
 
-fetch("https://63d61948dc3c55baf4309fc7.mockapi.io/libery")
+fetch(
+  "https://www.googleapis.com/books/v1/volumes?q=search+terms=java&startIndex=1"
+)
   .then((res) => res.json())
   .then((data) => {
     libery = data;
-    renderCard(libery);
+    // console.log(libery.items);
+    renderCard(libery.items);
   });
