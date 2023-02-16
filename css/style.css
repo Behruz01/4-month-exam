@@ -8,11 +8,7 @@
   position: absolute;
   display: none;
 }
-.toggle {
-  background-color: white;
-  color: black;
-}
-.dark-mode {
-  background-color: black;
-  color: white;
-}
+/* .block {
+  margin-left: 50%;
+  margin-top: 50%;
+} */

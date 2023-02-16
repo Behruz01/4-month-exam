@@ -9,8 +9,6 @@ const searchInput = findElement("#search");
 //rendering books
 let libery = [];
 function renderCard(array, parent = elCards) {
-  parent.textContent = null;
-
   const fragment = document.createDocumentFragment();
 
   array.forEach((book) => {
@@ -56,5 +54,4 @@ fetch("https://63d61948dc3c55baf4309fc7.mockapi.io/libery")
   .then((data) => {
     libery = data;
     renderCard(libery);
-    console.log(libery.length);
   });

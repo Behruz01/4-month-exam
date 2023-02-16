@@ -13,14 +13,16 @@
     <title>Login page</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="bg-dark body">
-    <div class="card mx-auto bg-dark w-25">
-      <img src="./image/Group 200.png" alt="BookSHelter" />
-      <form id="form" class="form-control">
+  <body class="body container">
+    <div class="block bg-transparent position-absolute top-50 start-50 w-25">
+      <div class="text-center">
+        <img src="./image/Group 200.png" alt="BookSHelter" />
+      </div>
+      <form id="form">
         <label for="user" class="label form-control-plaintext">
           <input
             id="userInput"
-            class="mt-4 form-control"
+            class="mt-4 form-control bg-transparent"
             type="text"
             placeholder="Username"
             name="username"
@@ -32,7 +34,7 @@
         <label for="pass" class="label form-control-plaintext">
           <input
             id="passwordInput"
-            class="mt-4 form-control"
+            class="mt-4 form-control bg-transparent"
             type="password"
             placeholder="Password"
             name="password"
@@ -44,7 +46,7 @@
 
         <button
           id="loginBtn"
-          class="btn btn-outline-primary btn-light mt-4 w-100"
+          class="btn btn-outline-primary bg-transparent btn-light mt-4 w-100"
         >
           Login
         </button>
