@@ -40,7 +40,7 @@ form.addEventListener("submit", (evt) => {
       if (data.token) {
         const token = data.token;
         localStorage.setItem("token", token);
-        window.location.href = "/index.html";
+        window.location.href = "/admin.html";
       }
     })
     .catch((err) => {

@@ -14,63 +14,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
-    <title>Document</title>
+    <title>Admin</title>
     <link rel="stylesheet" href="./css/home.css" />
   </head>
   <body class="">
-    <!-- swiper -->
-    <!-- Slider main container -->
-    <div class="swiper">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-          <img
-            style="height: 300px"
-            class="swipImg"
-            src="https://m.media-amazon.com/images/I/61k7Z74UuZL._AC._SR360,460.jpg
-"
-            alt="#"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            style="height: 300px"
-            class="swipImg"
-            src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/2921/9781292100555.jpg
-"
-            alt="#"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            style="height: 300px"
-            class="swipImg"
-            src="https://m.media-amazon.com/images/I/51rCIiZ+OiL._SL500_.jpg
-"
-            alt="#"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            style="height: 300px"
-            class="swipImg"
-            src="https://m.media-amazon.com/images/I/5197qo6Q1GL._SX418_BO1,204,203,200_.jpg
-"
-            alt="#"
-          />
-        </div>
-      </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
-
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-
-      <!-- If we need scrollbar -->
-      <div class="swiper-scrollbar"></div>
-    </div>
     <header class="header p-3 bg-light">
       <div class="container d-flex justify-content-between">
         <div class="image">
@@ -87,7 +34,7 @@
           <div class="div">
             <img src="./image/sunney.png" alt="sun" />
             <a class="btn btn-primary" href="./login.html">Logout</a>
-            <a class="btn btn-primary admin" href="./login.html">Admin</a>
+            <a class="btn btn-primary" href="./index.html">Home</a>
           </div>
         </form>
       </div>
@@ -107,6 +54,37 @@
         <button class="btn btn-secondary">Order by newest</button>
       </div>
     </nav>
+    <!-- inputs -->
+    <form id="addForm" class="form-control mt-5 container">
+      <input
+        class="form-control mt-3"
+        type="text"
+        name="name"
+        placeholder="name"
+      />
+      <input
+        class="form-control mt-3"
+        type="text"
+        name="image"
+        placeholder="image"
+      />
+      <input
+        class="form-control mt-3"
+        type="text"
+        name="category"
+        placeholder="category"
+      />
+      <input
+        class="form-control mt-3"
+        type="text"
+        name="description"
+        placeholder="description"
+      />
+      <button class="btn btn-outline-primary form-control mt-3">
+        Add books
+      </button>
+    </form>
+    <!-- **** -->
     <section class="container">
       <div class="d-flex">
         <div class="bookmarks p-3 bg-light">
@@ -148,16 +126,15 @@
             </p>
             <p id="date" class="card-text text-secondary">2009</p>
             <div class="btns d-flex">
-              <button class="btn bookmarka me-2 w-50 btn-warning">
-                Bookmark
-              </button>
               <button
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight"
-                aria-controls="offcanvasRight"
-                class="btn w-50 btn-outline-primary more"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                class="btn btn-outline-info w-50 more"
               >
-                More Info
+                Edit
+              </button>
+              <button class="btn delete btn-outline-danger w-50 ms-1">
+                Delete
               </button>
             </div>
 
@@ -166,56 +143,67 @@
             >
           </div>
         </div>
+      </template>
 
-        <!-- modal -->
-        <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
-          id="offcanvasRight"
-          aria-labelledby="offcanvasRightLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title modalName" id="offcanvasRightLabel">
-              Phyton
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <img class="modalImg" src="#" alt="Book" />
-            <p class="imageDescription modalDescription"></p>
-            <ul class="list-unstyled">
-              <li class="mt-3">
-                Author:
-                <span class="span text-primary author">Jamal Kasper</span>
-              </li>
-              <li class="mt-3">
-                Published: <span class="span text-primary published">2019</span>
-              </li>
-              <li class="mt-3">
-                Publishers:
-                <span class="span text-primary publishers">Hollman</span>
-              </li>
-              <li class="mt-3">
-                Categories:
-                <span class="span text-primary categories">Computers</span>
-              </li>
-              <li class="mt-3">
-                Pages Count: <span class="span text-primary pages">346</span>
-              </li>
-            </ul>
-            <a
-              href=""
-              class="btn btn-outline-secondary readdd start-5 modalMoreBtn"
-              >Read</a
-            >
+      <!-- Edite modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Modal title
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="editeForm" class="editForm">
+                <img class="form-control" id="editImage" src="" alt="" />
+                <input
+                  name="image"
+                  class="form-control mt-3"
+                  type="text"
+                  placeholder="Image"
+                />
+                <input
+                  name="title"
+                  class="form-control mt-3"
+                  type="text"
+                  placeholder="Title"
+                />
+                <input
+                  name="category"
+                  class="form-control mt-3"
+                  type="text"
+                  placeholder="Category"
+                />
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button id="saveBtn" type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
           </div>
         </div>
-      </template>
+      </div>
     </section>
     <!-- bootstrap -->
     <script
@@ -229,6 +217,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
     <!-- home js -->
-    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/admin.js"></script>
   </body>
 </html>

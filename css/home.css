@@ -1,3 +1,33 @@
 body {
   background: #e5e5e5;
 }
+.span {
+  border-radius: 10px;
+  background: rgba(13, 117, 255, 0.09);
+  padding: 5px;
+}
+.readdd {
+  margin-left: 80% !important;
+}
+.bookmarks {
+  width: 268px;
+}
+.card {
+  width: 282px !important;
+}
+.cards {
+  gap: 33px !important;
+  width: 990px;
+}
+.element {
+  background: #f8fafd;
+  border-radius: 4px;
+}
+.parag {
+  color: #838895;
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+}
