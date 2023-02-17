@@ -23,38 +23,19 @@ function renderCard(array, parent = elCards) {
     const title = findElement("#title", template);
     const description = findElement("#description", template);
     const date = findElement("#date", template);
+    const readBtn = findElement(".read", template);
     const bookmarkBtn = findElement(".bookmarka", template);
 
-    // const moreBtn = findElement(".more", template);
-    const readBtn = findElement(".read", template);
-    const modalName = findElement(".modalName", template);
-    const modalImg = findElement(".modalImg", template);
-    const modalDescription = findElement(".modalDescription", template);
-    const author = findElement(".author", template);
-    const published = findElement(".published", template);
-    const publishers = findElement(".publishers", template);
-    const categories = findElement(".categories", template);
-    const pages = findElement(".pages", template);
-    const modalMoreBtn = findElement(".modalMoreBtn", template);
+    const moreBtn = findElement(".more", template);
 
     elCards.dataset.id = book.id;
-
+    readBtn.href = book.volumeInfo.infoLink;
     image.src = book.volumeInfo.imageLinks.smallThumbnail;
     title.textContent = book.volumeInfo.title;
     description.textContent = book.volumeInfo.subtitle;
     date.textContent = book.volumeInfo.publishedDate;
     show.textContent = array.length;
     result.textContent = array.length;
-    readBtn.href = book.volumeInfo.infoLink;
-    // modal
-    modalName.textContent = book.volumeInfo.title;
-    modalImg.src = book.volumeInfo.imageLinks.smallThumbnail;
-    modalDescription.textContent = book.volumeInfo.description;
-    author.textContent = book.volumeInfo.authors;
-    published.textContent = book.volumeInfo.publishedDate;
-    publishers.textContent = book.volumeInfo.publisher;
-    categories.textContent = book.volumeInfo.categories;
-    pages.textContent = book.volumeInfo.pageCount;
 
     fragment.appendChild(template);
     // console.log(book);
@@ -62,10 +43,6 @@ function renderCard(array, parent = elCards) {
   parent.appendChild(fragment);
 }
 
-// renderModal
-function renderModal(array, parent = elCards) {
-  const fragment = document.createDocumentFragment();
-}
 // searching
 searchInput.addEventListener("input", (evt) => {
   evt.preventDefault();
@@ -91,6 +68,7 @@ fetch(
     libery = data;
 
     renderCard(libery.items);
+    renderModal(libery.items);
   });
 // dark mode
 function addDarkmodeWidget() {
@@ -140,3 +118,30 @@ adminBtn.addEventListener("click", () => {
   console.log("salom");
   window.location.href = "/login.html";
 });
+
+// renderModal
+function renderModal(array, parent = elCards) {
+  array.forEach((elem) => {
+    const readModalBtn = findElement(".modalMoreBtn");
+    const modalName = findElement(".modalName");
+    const modalImg = findElement(".modalImg");
+    const modalDescription = findElement(".modalDescription");
+    const author = findElement(".author");
+    const published = findElement(".published");
+    const publishers = findElement(".publishers");
+    const categories = findElement(".categories");
+    const pages = findElement(".pages");
+    const modalMoreBtn = findElement(".modalMoreBtn");
+
+    // modal
+    modalName.textContent = elem.volumeInfo.title;
+    modalImg.src = elem.volumeInfo.imageLinks.smallThumbnail;
+    modalDescription.textContent = elem.volumeInfo.description;
+    author.textContent = elem.volumeInfo.authors;
+    published.textContent = elem.volumeInfo.publishedDate;
+    publishers.textContent = elem.volumeInfo.publisher;
+    categories.textContent = elem.volumeInfo.categories;
+    pages.textContent = elem.volumeInfo.pageCount;
+    // readModalBtn = elem.volumeInfo.infoLink;
+  });
+}
